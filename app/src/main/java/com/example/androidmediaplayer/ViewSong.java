@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -40,13 +41,16 @@ public class ViewSong extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         killMediaPlayer();
+        playbackPosition = 0;
     }
 
     public void play(View v) {
             if (mediaPlayer != null && !mediaPlayer.isPlaying()) {
                 mediaPlayer.seekTo(playbackPosition);
                 mediaPlayer.start();
-            } else if (!mediaPlayer.isPlaying()) {
+            } else if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+
+            } else {
                 try {
                     mediaPlayer = new MediaPlayer();
                     mediaPlayer.setDataSource(url.getText().toString());
@@ -58,7 +62,13 @@ public class ViewSong extends AppCompatActivity {
                         }
                     });
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    Toast toast = Toast.makeText(getApplicationContext(),
+                            "That mp3 url does not exist!",
+                            Toast.LENGTH_SHORT);
+                    toast.show();
+                    mediaPlayer = null;
+                    killMediaPlayer();
+                    playbackPosition = 0;
                 }
             }
     }
