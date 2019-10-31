@@ -13,10 +13,11 @@
 
         <EditText
             android:id="@+id/title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textAlignment="center" />
 
         <EditText
             android:id="@+id/url"
@@ -25,6 +26,39 @@
             android:ems="10"
             android:gravity="start|top"
             android:inputType="textMultiLine" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#FBC02D"
+                android:onClick="pause"
+                android:text="PAUSE" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#388E3C"
+                android:onClick="play"
+                android:text="PLAY" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#D32F2F"
+                android:onClick="stop"
+                android:text="STOP" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/saveBtn"
